@@ -5,7 +5,7 @@ const Header = () => (
   <header>
     <span className="icn-logo"><i className="material-icons">code</i></span>
     <ul className="main-nav">
-      <li><NavLink to="/" style={({isActive}) => isActive ? {background: 'red'} : undefined}>Home</NavLink></li>
+      <li><NavLink to="/">Home</NavLink></li>
       <li><NavLink to="/about">About</NavLink></li>
       <li><NavLink to="/mycart">My Cart</NavLink></li>
     </ul>    
