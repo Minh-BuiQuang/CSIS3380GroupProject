@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-const Category = () => (
+const CategoryNav = () => (
   <ul className="category-nav">
     <li><NavLink to="/new">New Arrival</NavLink></li>
     <li><NavLink to="/men">Men</NavLink></li>
@@ -10,4 +10,4 @@ const Category = () => (
   </ul>   
 );
 
-export default Category;
+export default CategoryNav;
