@@ -79,7 +79,68 @@ button {
   margin-left: -1rem;
   display: flex;
 }
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+}
 
+.banner img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.banner h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+.product-box {
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.product-box img {
+  max-width: 100%;
+}
+
+.product-box h3 {
+  margin-top: 0;
+}
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.image-container img {
+  width: calc(33.33% - 10px);
+  margin-bottom: 10px;
+}
+.view-more-btn {
+  background-color: #007bff;
+  border: none;
+  /* border-radius: 5px; */
+  bottom: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 20px;
+  position:relative;
+  right: 10px;
+  text-transform: uppercase;
+}
+.view-more-btn:hover {
+  background-color: #ff4757;
+}
 .container {
   width: 95%;
   max-width: 1000px;

@@ -16,6 +16,7 @@ const Product = () => (
   </ul>   
 );
 
+
 //Todo: Load clothing data into card
 class Card extends React.Component {
     render() {
@@ -23,7 +24,7 @@ class Card extends React.Component {
         <div className="card-container">
           <div className="card">
             <div>
-              {/* <img src={this.props.url} alt={this.props.name} /> */}
+              <img class="shirt" src="img/red-t-shirt.jpg" alt="Item" />
             </div>
             <h2>Red T-Shirt</h2>
             <p>A brightly-coloured shirt that is summer ready and eye-catching</p>
