@@ -25,8 +25,8 @@ class Card extends React.Component {
             <div>
               {/* <img src={this.props.url} alt={this.props.name} /> */}
             </div>
-            <h2>Name</h2>
-            <p>Description</p>
+            <h2>Red T-Shirt</h2>
+            <p>A brightly-coloured shirt that is summer ready and eye-catching</p>
             {/* <h2>{this.props.name}</h2>
             <p>{this.props.desc}</p> */}
             <ul>

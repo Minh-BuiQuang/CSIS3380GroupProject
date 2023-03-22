@@ -71,6 +71,15 @@ button {
   object-fit: cover;
 }
 
+.logo, .shirt {
+  width: auto;
+  object-fit: cover;
+  margin-bottom: 0rem;
+  height: 5rem;
+  margin-left: -1rem;
+  display: flex;
+}
+
 .container {
   width: 95%;
   max-width: 1000px;

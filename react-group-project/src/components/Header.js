@@ -3,7 +3,9 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => (
   <header>
-    <span className="icn-logo"><i className="material-icons">logo</i></span>
+     <span className="icn-logo">
+    <img class="logo" src="img/SHOP.png" alt="SHOP logo"></img>    
+    </span>
     <ul className="main-nav">
       <li><NavLink to="/">Home</NavLink></li>
       <li><NavLink to="/about">About</NavLink></li>
