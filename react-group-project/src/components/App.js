@@ -17,9 +17,11 @@ function App() {
         <Route path="/about" element={<About title="About"/>}/>
         <Route path="/mycart" element={<MyCart title="My Cart"/>}/>
         <Route path="/new" element={<Category title="New Arrival"></Category>}/>
+        <Route path="/unisex" element={<Category title="Unisex"/>}/>
         <Route path="/men" element={<Category title="Men"/>}/>
         <Route path="/women" element={<Category title="Women"/>}/>
-        <Route path="/kids" element={<Category title="Kids"/>}/>
+        <Route path="/girls" element={<Category title="Girls"/>}/>
+        <Route path="/boys" element={<Category title="Boys"/>}/>
         <Route path="*" element={<NotFound/>} />
       </Routes>
     </div>
