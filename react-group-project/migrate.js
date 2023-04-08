@@ -1,15 +1,8 @@
 const mongoose = require('mongoose')
 const csvToJson = require('convert-csv-to-json')
+require('dotenv').config();
 
-
-const fs = require('fs')
-let secret = fs.readFileSync('config.txt', (err, inputD) => {
-   if (err) throw err;
-        secret = inputD.toString();    
-})    
-console.log("Secret" + secret);
-
-mongoose.connect("mongodb+srv://minhbui:"+ secret + "@node-express.bxsdy56.mongodb.net/clothing?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://minhbui:"+ process.env.secret + "@node-express.bxsdy56.mongodb.net/clothing?retryWrites=true&w=majority", {
     useNewUrlParser: true,
 })
 .then(() => {
