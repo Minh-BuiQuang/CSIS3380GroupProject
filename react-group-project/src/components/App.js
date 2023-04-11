@@ -1,5 +1,5 @@
 import React from 'react'
-import {Routes, Route, Navigate} from 'react-router-dom'
+import {Routes, Route } from 'react-router-dom'
 
 import Header from './Header'
 import About from './About'
@@ -12,11 +12,11 @@ function App() {
   return (
     <div className="App container">
       <Header/>
-      <Routes>
+      <Routes forceRefresh={true}>
         <Route path="/" element={<Home/>}/>
         <Route path="/about" element={<About title="About"/>}/>
         <Route path="/mycart" element={<MyCart title="My Cart"/>}/>
-        <Route path="/new" element={<Category title="New Arrival"></Category>}/>
+        <Route path="/new" element={<Category title="New Arrival"/>}/>
         <Route path="/unisex" element={<Category title="Unisex"/>}/>
         <Route path="/men" element={<Category title="Men"/>}/>
         <Route path="/women" element={<Category title="Women"/>}/>

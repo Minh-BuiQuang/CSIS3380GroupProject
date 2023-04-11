@@ -215,19 +215,26 @@ ul {
   list-style-type: none;
 }
 
-.category-nav li, .main-nav li, .product-list li {
+.category-nav li, .main-nav li {
   display: inline-block;
 }
 .item-container li {
   display:block
 }
-
+.product-list li{
+  display: inline-block;
+  vertical-align: middle
+}
+.item-list li{
+  display: block
+}
 .item {
   box-sizing: border-box;
-  background: rgb(206, 206, 206);
-  width: 240px;
-  height: 400px;
-  padding: 20px;
+  background: rgb(205, 245, 207);
+  width: 230px;
+  height: 440px;
+  padding: 10px;
+  margin: 5px;
   border-radius: 5px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
 }
@@ -246,4 +253,9 @@ ul {
   height: 10rem;
   width: 100%;
   display: flex;
+}
+
+.category-name {
+  text-align: center;
+  margin-top: 2em;
 }
