@@ -71,7 +71,7 @@ button {
   object-fit: cover;
 }
 
-.logo, .shirt {
+.logo {
   width: auto;
   object-fit: cover;
   margin-bottom: 0rem;
@@ -218,13 +218,13 @@ ul {
 .category-nav li, .main-nav li, .product-list li {
   display: inline-block;
 }
-.card-container li {
+.item-container li {
   display:block
 }
 
-.card {
+.item {
   box-sizing: border-box;
-  background: white;
+  background: rgb(206, 206, 206);
   width: 240px;
   height: 400px;
   padding: 20px;
@@ -232,10 +232,18 @@ ul {
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-.card div {
+.item div {
   text-align: center;
   padding: 1em;
   background-color: #000;
   margin-bottom: 1.5em;
 }
 
+
+.item-image {
+  width: auto;
+  object-fit: cover;
+  height: 10rem;
+  width: 100%;
+  display: flex;
+}

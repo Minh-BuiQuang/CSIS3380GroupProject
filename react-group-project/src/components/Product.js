@@ -1,54 +1,55 @@
-import React from 'react';
-//import { Link, NavLink } from 'react-router-dom';
-//import { useState } from 'react';
-import Product from './Product';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-//Todo: Add clothing card dynamically
 
-Product.map((product) => {
-  const list = (
+export default function Product() {
+  const[products, setProducts] = useState([])
+  useEffect(() => {
+    axios.get('https://csis3380-group-9-backend.onrender.com/products')
+    .then((res) => {
+      setProducts(res.data)
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  },[])
+
+  return (
     <ul className="product-list">
-          <li><Card/>Id: {product.id}</li>
-          <li><Card/>Gender: {product.gender}</li>
-          <li><Card/>MasterCategory: {product.masterCategory}</li>
-          <li><Card/>SubCategory: {product.subCategory}</li>
-          <li><Card/>ArticleType: {product.articleType}</li>
-          <li><Card/>BaseColour: {product.baseColour}</li>
-          <li><Card/>Season: {product.season}</li>
-          <li><Card/>Year: {product.year}</li>
-          <li><Card/>Usage: {product.usage}</li>
-          <li><Card/>ProductDisplayName: {product.productDisplayName}</li>
-          <li><Card/>Filename: {product.filename}</li>
-          <li><Card/>Link: {product.link}</li>
-          <li><Card/>Price: {product.price}</li>
-          <li><Card/>Stock: {product.stock}</li>
-</ul>
-);
- return list; 
-});
-//Todo: Load clothing data into card
-class Card extends React.Component {
+      {products.map(p => {
+        return (
+          <li><Item
+            key={p._id}
+            name={p.productDisplayName}
+            link={p.link}
+            type={p.articleType}
+            color={p.baseColour}
+            id={p.id}
+            masterCategory={p.masterCategory}
+            price={p.price}
+            stock={p.stock}
+          /></li>
+        )
+      })}
+    </ul>   
+  )
+}
+
+//Todo: Load clothing data into item
+class Item extends React.Component {
     render() {
       return (
-        <div className="card-container">
-          <div className="card">
-            <div>
-              <img class="shirt" src="img/red-t-shirt.jpg" alt="Item" />
-            </div>
-            <h2>Red T-Shirt</h2>
-            <p>A brightly-coloured shirt that is summer ready and eye-catching</p>
-            {/* <h2>{this.props.name}</h2>
-            <p>{this.props.desc}</p> */}
+        <div className="item-container">
+          <div className="item">
+            <img class="item-image" src={this.props.link} alt="Item" />
+            <h2>{this.props.name}</h2>
             <ul>
-              {/* <li><strong>Diameter:</strong>{this.props.diameter}</li>
-              <li><strong>Moons:</strong> {this.props.moons}</li> */}
-              <li><strong>Price:</strong>$9.99</li>
-              <li><strong>Stock:</strong> 10</li>
+              <li><strong>Price:</strong> ${this.props.price}</li>
+              <li><strong>Stock:</strong> {this.props.stock}</li>
             </ul>
           </div>
         </div>
       )
     }
   }
-
-export default Product;
