@@ -67,8 +67,8 @@ class Item extends React.Component {
             <li>
               <strong>Year:</strong> {this.props.year}
             </li>
-            <button onClick={handleAddToCart}>Add to Cart</button>
-            <button onClick={handleRemoveFromCart}>Remove from Cart</button>
+            <button onClick={handleAddToCart}>+</button>
+            <button onClick={handleRemoveFromCart}>-</button>
           </ul>
         </div>
       </div>

@@ -55,12 +55,16 @@ button {
   outline: none;
 }
 button {
-  color: white;
-  background: #4188dc;
-  padding-left: 1em;
-  padding-right: 1em;
+  color: black;
+  background: transparent;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.5em;
   cursor: pointer;
-  border-color: rgba(0,0,0, .1);
+  border-color: transparent;
+}
+button:hover{
+  background: #007bff;
 }
 
 /* layout  styling*/
