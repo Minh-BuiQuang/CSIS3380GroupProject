@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header = (props) => {
+const Header = ({ cartItems = [] }) => {
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <header>
       <span className="icn-logo">
@@ -15,7 +17,7 @@ const Header = (props) => {
           <NavLink to="/about">About</NavLink>
         </li>
         <li>
-          <NavLink to="/mycart">My Cart ({props.cartCount})</NavLink>
+          <NavLink to="/mycart">My Cart ({cartCount})</NavLink>
         </li>
       </ul>
       <img className="banner" src="img/banner.jpg" alt="banner" />

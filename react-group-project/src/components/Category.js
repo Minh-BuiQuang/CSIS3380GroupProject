@@ -18,7 +18,7 @@ export default function Category (props) {
     .catch(err => {
       console.log(err)
     })
-  },[products])
+  },[products, props.title])
   return (
     <div className="main-content home">
       <CategoryNav/>

@@ -1,77 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default class Product extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cartCount: 0,
-    };
-    this.handleAddToCart = this.handleAddToCart.bind(this);
-    this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
-  }
+export default function Product(props) {
+  const [cartCount, setCartCount] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
 
-  handleAddToCart() {
-    this.setState({ cartCount: this.state.cartCount + 1 });
-  }
-
-  handleRemoveFromCart() {
-    if (this.state.cartCount > 0) {
-      this.setState({ cartCount: this.state.cartCount - 1 });
+  const handleAddToCart = (id) => {
+    const index = cartItems.findIndex((cartItem) => cartItem.id === id);
+    if (index === -1) {
+      setCartItems([...cartItems, { id: id, quantity: 1 }]);
+    } else {
+      const newCartItems = [...cartItems];
+      newCartItems[index].quantity++;
+      setCartItems(newCartItems);
     }
-  }
-  
+    setCartCount(cartCount + 1);
+  };
 
-  render() {
-    return (
-      <ul className="product-list">
-        {this.props.products.map((p) => {
-          return (
-            <li key={p._id}>
-              <Item
-                name={p.productDisplayName}
-                link={p.link}
-                type={p.articleType}
-                color={p.baseColour}
-                id={p.id}
-                masterCategory={p.masterCategory}
-                price={p.price}
-                stock={p.stock}
-                year={p.year}
-                cartCount={this.state.cartCount} // pass cartCount as a prop
-                handleAddToCart={this.handleAddToCart}
-                handleRemoveFromCart={this.handleRemoveFromCart}
-              />
-            </li>
-          );
-        })}
-      </ul>
-    );
-  }
+  const handleRemoveFromCart = (id) => {
+    const index = cartItems.findIndex((cartItem) => cartItem.id === id);
+    if (index !== -1 && cartItems[index].quantity === 1) {
+      const newCartItems = cartItems.filter((cartItem) => cartItem.id !== id);
+      setCartItems(newCartItems);
+    } else if (index !== -1 && cartItems[index].quantity > 1) {
+      const newCartItems = [...cartItems];
+      newCartItems[index].quantity--;
+      setCartItems(newCartItems);
+    }
+    setCartCount(cartCount - 1);
+  };
+
+  return (
+    <ul className="product-list">
+      {props.products.map((p) => {
+        return (
+          <li key={p._id}>
+            <Item
+              id={p._id}
+              name={p.productDisplayName}
+              link={p.link}
+              type={p.articleType}
+              color={p.baseColour}
+              masterCategory={p.masterCategory}
+              price={p.price}
+              stock={p.stock}
+              year={p.year}
+              cartCount={cartItems.filter((item) => item.id === p._id).reduce((total, item) => total + item.quantity, 0)}
+              handleAddToCart={() => handleAddToCart(p._id)}
+              handleRemoveFromCart={() => handleRemoveFromCart(p._id)}
+            />
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
-class Item extends React.Component {
-  render() {
-    const { handleAddToCart, handleRemoveFromCart } = this.props;
-    return (
-      <div className="item-container">
-        <div className="item">
-          <img className="item-image" src={this.props.link} alt="Item" />
-          <h2>{this.props.name}</h2>
-          <ul className="item-list">
-            <li>
-              <strong>Price:</strong> ${this.props.price}
-            </li>
-            <li>
-              <strong>Stock:</strong> {this.props.stock}
-            </li>
-            <li>
-              <strong>Year:</strong> {this.props.year}
-            </li>
-            <button onClick={handleAddToCart}>+</button>
-            <button onClick={handleRemoveFromCart}>-</button>
-          </ul>
-        </div>
+function Item(props) {
+  return (
+    <div className="item-container">
+      <div className="item">
+        <img className="item-image" src={props.link} alt="Item" />
+        <h2>{props.name}</h2>
+        <ul className="item-list">
+          <li>
+            <strong>Price:</strong> ${props.price}
+          </li>
+          <li>
+            <strong>Stock:</strong> {props.stock}
+          </li>
+          <li>
+            <strong>Year:</strong> {props.year}
+          </li>
+          <li>
+            <strong>Quantity:</strong> {props.cartCount}
+          </li>
+          <button onClick={props.handleAddToCart}>+</button>
+          <button onClick={props.handleRemoveFromCart}>-</button>
+        </ul>
       </div>
-    );
-  }
+    </div>
+  );
 }
